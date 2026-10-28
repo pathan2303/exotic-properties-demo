@@ -107,3 +107,61 @@ themeToggle?.addEventListener('click', () => {
   applyTheme(next);
   try { localStorage.setItem('exotic-properties-theme', next); } catch (_) {}
 });
+
+/* Featured property carousel: timed transitions plus manual controls. */
+(() => {
+  const slides = [...document.querySelectorAll('.hero-slide')];
+  if (!slides.length) return;
+  const dots = [...document.querySelectorAll('.carousel-dot')];
+  const title = document.getElementById('carousel-title');
+  const kicker = document.getElementById('carousel-kicker');
+  const current = document.getElementById('carousel-current');
+  let active = 0, timer;
+  const show = (index) => {
+    active = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === active));
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === active));
+    if (title) title.textContent = slides[active].dataset.title || 'FEATURED PROPERTY';
+    if (kicker) kicker.textContent = slides[active].dataset.type || 'PROPERTY SHOWCASE';
+    if (current) current.textContent = String(active + 1).padStart(2, '0');
+  };
+  const restart = () => {
+    clearInterval(timer);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(() => show(active + 1), 5600);
+  };
+  document.getElementById('carousel-prev')?.addEventListener('click', () => { show(active - 1); restart(); });
+  document.getElementById('carousel-next')?.addEventListener('click', () => { show(active + 1); restart(); });
+  dots.forEach(dot => dot.addEventListener('click', () => { show(Number(dot.dataset.slide)); restart(); }));
+  document.querySelector('.hero-carousel')?.addEventListener('mouseenter', () => clearInterval(timer));
+  document.querySelector('.hero-carousel')?.addEventListener('mouseleave', restart);
+  show(0); restart();
+})();
+
+/* Photo backdrop and architecture respond subtly to natural page scrolling. */
+(() => {
+  const world = document.querySelector('.scroll-world-image');
+  const architecture = document.querySelector('.architecture-reveal-image');
+  let scheduled = false;
+  const update = () => {
+    const y = window.scrollY || 0;
+    if (world) {
+      const scene = Math.floor(y / Math.max(window.innerHeight * 1.25, 1)) % 3;
+      const scenes = [
+        "url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85')",
+        "url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2000&q=85')",
+        "url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=2000&q=85')"
+      ];
+      if (world.dataset.scene !== String(scene)) { world.style.backgroundImage = scenes[scene]; world.dataset.scene = String(scene); }
+      world.style.transform = `translate3d(0, ${Math.min(y * -.025, 0)}px, 0) scale(1.08)`;
+    }
+    if (architecture) {
+      const r = architecture.parentElement.getBoundingClientRect();
+      const progress = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+      const shift = Math.max(-22, Math.min(22, (progress - .5) * -44));
+      architecture.style.transform = `scale(${1.1 + Math.max(0, Math.min(1, progress)) * .06}) translate3d(0, ${shift}px, 0)`;
+    }
+    scheduled = false;
+  };
+  window.addEventListener('scroll', () => { if (!scheduled) { requestAnimationFrame(update); scheduled = true; } }, { passive: true });
+  update();
+})();
