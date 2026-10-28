@@ -20,7 +20,7 @@
   </div>
 
   <div class="cursor-glow" aria-hidden="true"></div>
-  <div class="noise" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div><div class="scroll-world" aria-hidden="true"><div class="scroll-world-image"></div><div class="scroll-world-shade"></div></div>
 
   <header class="site-header" id="top">
     <a class="brand" href="#home" aria-label="Exotic Properties home">
@@ -52,25 +52,30 @@
         <div class="hero-foot reveal"><span>YOUR TRUST. OUR COMMITMENT.</span><span class="scroll-cue"><i></i> SCROLL TO EXPLORE</span></div>
       </div>
 
-      <div class="hero-art" id="hero-art" aria-label="Abstract 3D luxury architecture artwork">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="gold-sphere"></div>
-        <div class="architecture">
-          <div class="tower tower-a"><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="tower tower-b"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="tower tower-c"><i></i><i></i><i></i><i></i></div>
-          <div class="podium"></div>
-          <div class="arch-floor"></div>
-        </div>
-        <div class="art-label art-label-top"><span>FIG. 001</span><b>ARCHITECTURE / POSSIBILITY</b></div>
-        <div class="art-label art-label-bottom"><span>01 — 05</span><b>BUILT AROUND YOU</b></div>
-        <div class="art-cross cross-one"></div><div class="art-cross cross-two"></div>
+      <div class="hero-carousel" id="hero-art" aria-label="Featured property showcase">
+        <div class="hero-slide active" data-title="THE GOLDEN HORIZON" data-type="SIGNATURE RESIDENCE" style="--slide-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85')"><div class="slide-shade"></div></div>
+        <div class="hero-slide" data-title="THE GLASS HOUSE" data-type="CONTEMPORARY LIVING" style="--slide-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85')"><div class="slide-shade"></div></div>
+        <div class="hero-slide" data-title="THE PRIVATE ESTATE" data-type="CURATED LUXURY" style="--slide-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1800&q=85')"><div class="slide-shade"></div></div>
+        <div class="carousel-caption"><span class="carousel-kicker" id="carousel-kicker">SIGNATURE RESIDENCE</span><strong id="carousel-title">THE GOLDEN HORIZON</strong><span class="carousel-counter"><b id="carousel-current">01</b> / 03</span></div>
+        <div class="carousel-controls"><button id="carousel-prev" type="button" aria-label="Previous property">←</button><div class="carousel-dots"><button class="carousel-dot active" type="button" aria-label="Show property 1" data-slide="0"></button><button class="carousel-dot" type="button" aria-label="Show property 2" data-slide="1"></button><button class="carousel-dot" type="button" aria-label="Show property 3" data-slide="2"></button></div><button id="carousel-next" type="button" aria-label="Next property">→</button></div>
+        <div class="carousel-vertical">EXOTIC PROPERTIES / PROPERTY FILM</div>
       </div>
       <div class="hero-side-note">CURATED SPACES · CONSIDERED LIVING</div>
     </section>
 
     <section class="ticker" aria-label="Our services">
       <div class="ticker-track"><span>BUY WITH CONFIDENCE</span><b>✳</b><span>SELL WITH STRATEGY</span><b>✳</b><span>RENT WITH EASE</span><b>✳</b><span>INVEST WITH VISION</span><b>✳</b><span>BUY WITH CONFIDENCE</span><b>✳</b><span>SELL WITH STRATEGY</span><b>✳</b><span>RENT WITH EASE</span><b>✳</b><span>INVEST WITH VISION</span><b>✳</b></div>
+    </section>
+
+    <section class="architecture-reveal" aria-label="Cinematic architecture showcase">
+      <div class="architecture-reveal-image"></div>
+      <div class="architecture-reveal-copy reveal">
+        <span class="eyebrow"><span class="eyebrow-line"></span> ARCHITECTURE IN MOTION</span>
+        <h2>Not just a place.<br><em>A point of view.</em></h2>
+        <p>Distinctive spaces. Exceptional perspective. A property journey shaped around you.</p>
+        <a class="button button-gold" href="#properties">Explore the collection <span>↗</span></a>
+      </div>
+      <span class="architecture-reveal-index">EP / 001 — 003</span>
     </section>
 
     <section class="about section section-pad" id="about">
@@ -102,15 +107,15 @@
       <div class="properties-heading reveal"><h2>Possibility has<br><em>an address.</em></h2><p>Sample showcase · Replace these demo cards with the client’s actual listings.</p></div>
       <div class="property-grid">
         <article class="property-card property-large reveal">
-          <div class="property-image image-villa"><div class="image-overlay"></div><span class="property-tag">DEMO LISTING / 001</span><span class="image-placeholder">PROPERTY IMAGE<br><small>Replace with client photography</small></span><span class="property-index">01</span></div>
+          <div class="property-image image-villa" style="--property-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85')"><div class="image-overlay"></div><span class="property-tag">DEMO LISTING / 001</span><span class="image-placeholder">PROPERTY IMAGE<br><small>Replace with client photography</small></span><span class="property-index">01</span></div>
           <div class="property-meta"><div><span class="property-type">LUXURY RESIDENCE</span><h3>The Golden Horizon</h3><p>Location to be confirmed · 4 bed · 5 bath</p></div><a href="#contact" aria-label="Enquire about The Golden Horizon">↗</a></div>
         </article>
         <article class="property-card reveal">
-          <div class="property-image image-apartment"><div class="image-overlay"></div><span class="property-tag">DEMO LISTING / 002</span><span class="image-placeholder">PROPERTY IMAGE<br><small>Replace with client photography</small></span><span class="property-index">02</span></div>
+          <div class="property-image image-apartment" style="--property-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85')"><div class="image-overlay"></div><span class="property-tag">DEMO LISTING / 002</span><span class="image-placeholder">PROPERTY IMAGE<br><small>Replace with client photography</small></span><span class="property-index">02</span></div>
           <div class="property-meta"><div><span class="property-type">CITY APARTMENT</span><h3>Urban Still</h3><p>Location to be confirmed · 2 bed · 2 bath</p></div><a href="#contact" aria-label="Enquire about Urban Still">↗</a></div>
         </article>
         <article class="property-card reveal">
-          <div class="property-image image-estate"><div class="image-overlay"></div><span class="property-tag">DEMO LISTING / 003</span><span class="image-placeholder">PROPERTY IMAGE<br><small>Replace with client photography</small></span><span class="property-index">03</span></div>
+          <div class="property-image image-estate" style="--property-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85')"><div class="image-overlay"></div><span class="property-tag">DEMO LISTING / 003</span><span class="image-placeholder">PROPERTY IMAGE<br><small>Replace with client photography</small></span><span class="property-index">03</span></div>
           <div class="property-meta"><div><span class="property-type">INVESTMENT OPPORTUNITY</span><h3>The Outlook</h3><p>Location to be confirmed · Details on request</p></div><a href="#contact" aria-label="Enquire about The Outlook">↗</a></div>
         </article>
       </div>
