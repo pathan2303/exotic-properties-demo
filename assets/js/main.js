@@ -86,3 +86,24 @@ document.getElementById('contact-form').addEventListener('submit', e => {
   window.location.href = `mailto:hello@exoticproperties.example?subject=${subject}&body=${body}`;
   document.getElementById('form-hint').textContent = 'Your email app should open with the enquiry drafted. Replace the demo email address before launch.';
 });
+const themeToggle = document.getElementById('theme-toggle');
+const themeSymbol = themeToggle?.querySelector('.theme-symbol');
+const themeLabel = themeToggle?.querySelector('.theme-label');
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  const day = theme === 'day';
+  if (themeSymbol) themeSymbol.textContent = day ? '☾' : '☼';
+  if (themeLabel) themeLabel.textContent = day ? 'NIGHT MODE' : 'DAY MODE';
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-label', day ? 'Switch to night mode' : 'Switch to day mode');
+    themeToggle.setAttribute('title', day ? 'Switch to night mode' : 'Switch to day mode');
+  }
+}
+let savedTheme = 'night';
+try { savedTheme = localStorage.getItem('exotic-properties-theme') || 'night'; } catch (_) {}
+applyTheme(savedTheme);
+themeToggle?.addEventListener('click', () => {
+  const next = document.documentElement.dataset.theme === 'day' ? 'night' : 'day';
+  applyTheme(next);
+  try { localStorage.setItem('exotic-properties-theme', next); } catch (_) {}
+});
